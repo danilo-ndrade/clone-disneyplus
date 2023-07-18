@@ -1,0 +1,45 @@
+Primeiro faz o setup do projeto. 
+
+    Instala o npm [npm install]
+    instala dependencias
+        - npm install --save-dev gulp
+        - npm install --save-dev gulp-sass
+        - npm install --save-dev sass
+        - npm install --save-dev gulp-imagemin
+
+    adiciona no packet.json o script 'gulp' com nome 'build' 
+    adiciona no packet.json o script 'gulp watch' com nome 'dev'
+
+        no arquivo packet.json:
+            "scripts": {
+                 "dev": "gulp watch", <- habilita que no terminal possa se usar 'npm run dev'
+                                         fazendo com que o gulp fique observando por mudanças
+                                         no arquivo scss, como definido no arquivo gulpfile.js
+                 "build": "gulp"      <- habilita que no terminal possa se usar 'npm run buld'
+                                         fazendo com que o gulp use as funções definidas como 
+                                         default na arquivo gulpfile.js
+             },
+
+
+Utilizando a metodologia BEM identifica agora as classes necessárias para os elementos
+
+    text; text--small; text--big por exemplo;
+    Faz se o uso de mixins. Para texto e titulos por exemplo.
+
+        *mixin para definir tamanho do texto e a sua line height baseada no tamanho da fonte*
+        @mixin text($fontSize: 16px) {
+            font-size: $fontSize;
+            line-height: $fontSize + 10px;
+        }
+
+        em uso:
+
+        .text {
+            @include text;
+        }
+        .text--big {
+            @include text(18px);
+        }
+        .text--small {
+            @include text(12px);
+        }
